@@ -1,9 +1,9 @@
 import random
 
 from PyQt5.QtWidgets import *
+from number import number
 import sys
 from matrix import matrix1, matrix2, matrix3
-import threading
 matrix = matrix1
 k = random.randint(1, 4)
 if (k == 1):
@@ -13,7 +13,7 @@ elif (k == 2):
 else:
     matrix = matrix3
 class basicWindow(QWidget):
-    global count
+
     def __init__(self):
         super().__init__()
         Outhboxlayout = QHBoxLayout()
@@ -34,33 +34,25 @@ class basicWindow(QWidget):
         Outhboxlayout.addLayout(grid_layout)
 
         self.setLayout(Outhboxlayout)
+        self.setWindowTitle('sudoku')
 
         for x in range(9):
             for y in range(9):
-                button = QPushButton(str(str(matrix[x][y])))
-                button.setMaximumWidth(40)
+                button_number = matrix[x][y] - 1
+                button = QPushButton()
+                button.setStyleSheet('border-image:url(%s); border :0px;' % number[button_number])
+
+                button.setMinimumSize(60, 60)
                 grid_layout.addWidget(button, x, y)
                 button.clicked.connect(self.button_clicked)
-
-        self.setWindowTitle('sudoku')
 
     def button_clicked(self):
         button = self.sender()
         text, ok = QInputDialog.getInt(self, '값', '값을 입력하세요')
-        if ok:
-            button.setText(str(text))
-count = 0
-def startTimer():
-    global count
-    timer = threading.Timer(10, startTimer)
-    timer.start()
-
-    count += 1
-    if count > 5:
-        timer.cancel()
-
-startTimer()
-
+        if ok and int(text) < 10:
+            button.setStyleSheet('border-image:url(%s); border :0px;' % number[int(text) - 1])
+        else:
+            QMessageBox.information(self, "QMessageBox", "번호는 10을 넘을 수 없습니다")
 
 
 if __name__ == '__main__':
@@ -68,6 +60,5 @@ if __name__ == '__main__':
     windowExample = basicWindow()
     windowExample.show()
     sys.exit(app.exec_())
-
 
 
