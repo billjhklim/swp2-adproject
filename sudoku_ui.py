@@ -1,12 +1,19 @@
+import random
+
 from PyQt5.QtWidgets import *
 import sys
-import random
-from PyQt5.QtCore import *
-
-
-
-
+from matrix import matrix1, matrix2, matrix3
+import threading
+matrix = matrix1
+k = random.randint(1, 4)
+if (k == 1):
+    matrix = matrix1
+elif (k == 2):
+    matrix = matrix2
+else:
+    matrix = matrix3
 class basicWindow(QWidget):
+    global count
     def __init__(self):
         super().__init__()
         Outhboxlayout = QHBoxLayout()
@@ -30,7 +37,7 @@ class basicWindow(QWidget):
 
         for x in range(9):
             for y in range(9):
-                button = QPushButton(str(str(random.randint(1,9))))
+                button = QPushButton(str(str(matrix[x][y])))
                 button.setMaximumWidth(40)
                 grid_layout.addWidget(button, x, y)
                 button.clicked.connect(self.button_clicked)
@@ -42,8 +49,17 @@ class basicWindow(QWidget):
         text, ok = QInputDialog.getInt(self, '값', '값을 입력하세요')
         if ok:
             button.setText(str(text))
+count = 0
+def startTimer():
+    global count
+    timer = threading.Timer(10, startTimer)
+    timer.start()
 
+    count += 1
+    if count > 5:
+        timer.cancel()
 
+startTimer()
 
 
 
@@ -52,5 +68,6 @@ if __name__ == '__main__':
     windowExample = basicWindow()
     windowExample.show()
     sys.exit(app.exec_())
+
 
 
