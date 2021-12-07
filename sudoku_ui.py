@@ -45,6 +45,61 @@ class basicWindow(QWidget):
                 button.setMinimumSize(60, 60)
                 grid_layout.addWidget(button, x, y)
                 button.clicked.connect(self.button_clicked)
+                
+    def Btn1_clicked(self):
+        Btn1 = self.sender()
+        items = ("쉬움", "보통", "어려움")
+        item, ok = QInputDialog.getItem(self, "난이도", "난이도를 입력하세요", items, 0, False)
+        if ok and item:
+            Btn1.setText(item) 
+            
+    x = random.randint(9)
+    y = random.randint(9)
+
+    if difficulty == easy:
+        z = 0
+        while z < 38:
+            z = 0
+            matrix[x][y] = matrix1[x][y]
+            for a in range(9):
+              for b in range(9):
+                  if matrix[a][b] != '':
+                      z += 1
+        if matrix[a][b] == None:
+            matrix[a][b] == ''
+        for i in range(9):
+            for k in range(9):
+                button = QPushButton(str(str(matrix[x][y])))
+
+    if difficulty == normal:
+        z = 0
+        while z < 30:
+            z = 0
+            matrix[x][y] = matrix1[x][y]
+            for a in range(9):
+                for b in range(9):
+                    if matrix[a][b] != '':
+                        z += 1
+        if matrix[a][b] == None:
+            matrix[a][b] == ''
+        for i in range(9):
+            for k in range(9):
+                button = QPushButton(str(str(matrix[x][y])))
+
+    if difficulty == hard:
+        z = 0
+        while z < 23:
+            z = 0
+            matrix[x][y] = matrix1[x][y]
+            for a in range(9):
+                for b in range(9):
+                    if matrix[a][b] != '':
+                        z += 1
+        if matrix[a][b] == None:
+            matrix[a][b] == ''
+        for i in range(9):
+            for k in range(9):
+                button = QPushButton(str(str(matrix[x][y])))
 
     def button_clicked(self):
         button = self.sender()
