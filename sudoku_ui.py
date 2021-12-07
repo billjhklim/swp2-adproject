@@ -56,7 +56,7 @@ class basicWindow(QWidget):
     x = random.randint(9)
     y = random.randint(9)
 
-    if difficulty == easy:
+    if difficulty == 0:
         z = 0
         while z < 38:
             z = 0
@@ -71,7 +71,7 @@ class basicWindow(QWidget):
             for k in range(9):
                 button = QPushButton(str(str(matrix[i][k])))
 
-    if difficulty == normal:
+    if difficulty == 1:
         z = 0
         while z < 30:
             z = 0
@@ -86,7 +86,7 @@ class basicWindow(QWidget):
             for k in range(9):
                 button = QPushButton(str(str(matrix[i][k])))
 
-    if difficulty == hard:
+    if difficulty == 2:
         z = 0
         while z < 23:
             z = 0
