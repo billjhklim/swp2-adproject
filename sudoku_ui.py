@@ -58,48 +58,51 @@ class basicWindow(QWidget):
 
     if difficulty == 0:
         z = 0
-        while z < 38:
+        while z < 37:
             z = 0
             matrix[x][y] = matrix1[x][y]
             for a in range(9):
-              for b in range(9):
-                  if matrix[a][b] != '':
-                      z += 1
-        if matrix[a][b] == None:
-            matrix[a][b] == ''
+                for b in range(9):
+                    if matrix[a][b] != '':
+                        z += 1
+
         for i in range(9):
             for k in range(9):
-                button = QPushButton(str(str(matrix[i][k])))
+                if matrix[i][k] == None:
+                    matrix[i][k] == ''
+                button = QPushButton(str(matrix[i][k]))
 
     if difficulty == 1:
         z = 0
-        while z < 30:
+        while z < 29:
             z = 0
             matrix[x][y] = matrix1[x][y]
             for a in range(9):
                 for b in range(9):
                     if matrix[a][b] != '':
                         z += 1
-        if matrix[a][b] == None:
-            matrix[a][b] == ''
+
         for i in range(9):
             for k in range(9):
-                button = QPushButton(str(str(matrix[i][k])))
+                if matrix[i][k] == None:
+                    matrix[i][k] == ''
+                button = QPushButton(str(matrix[i][k]))
 
     if difficulty == 2:
         z = 0
-        while z < 23:
+        while z < 22:
             z = 0
             matrix[x][y] = matrix1[x][y]
             for a in range(9):
                 for b in range(9):
                     if matrix[a][b] != '':
                         z += 1
-        if matrix[a][b] == None:
-            matrix[a][b] == ''
+
         for i in range(9):
             for k in range(9):
-                button = QPushButton(str(str(matrix[i][k])))
+                if matrix[i][k] == None:
+                    matrix[i][k] == ''
+                button = QPushButton(str(matrix[i][k]))
 
     def button_clicked(self):
         button = self.sender()
