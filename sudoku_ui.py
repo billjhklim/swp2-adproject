@@ -69,7 +69,7 @@ class basicWindow(QWidget):
             matrix[a][b] == ''
         for i in range(9):
             for k in range(9):
-                button = QPushButton(str(str(matrix[x][y])))
+                button = QPushButton(str(str(matrix[i][k])))
 
     if difficulty == normal:
         z = 0
@@ -84,7 +84,7 @@ class basicWindow(QWidget):
             matrix[a][b] == ''
         for i in range(9):
             for k in range(9):
-                button = QPushButton(str(str(matrix[x][y])))
+                button = QPushButton(str(str(matrix[i][k])))
 
     if difficulty == hard:
         z = 0
@@ -99,7 +99,7 @@ class basicWindow(QWidget):
             matrix[a][b] == ''
         for i in range(9):
             for k in range(9):
-                button = QPushButton(str(str(matrix[x][y])))
+                button = QPushButton(str(str(matrix[i][k])))
 
     def button_clicked(self):
         button = self.sender()
